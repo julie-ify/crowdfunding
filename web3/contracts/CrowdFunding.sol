@@ -46,9 +46,17 @@ contract CrowdFunding {
         return campaignIndex;
     }
 
-    function getCampaigns() external {}
+    function donateToCampaign(uint256 _id) public payable {
+        Campaign storage campaign = campaigns[_id];
 
-    function donateToCampaign() external {}
+        (bool success, ) = payable(campaign.owner).call{value: msg.value}("");
+
+        require(success, "Failed to send Ether");
+
+        campaign.donations.push(msg.value);
+        campaign.donators.push(msg.sender);
+				campaign.amountCollected += msg.value;
+    }
 
     function getDonators() external {}
 }
