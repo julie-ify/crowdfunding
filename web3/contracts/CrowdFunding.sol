@@ -12,7 +12,7 @@ contract CrowdFunding {
         uint256 deadline;
         uint256 amountCollected;
         string image;
-        address[] donators;
+        address[] donors;
         uint256[] donations;
     }
 
@@ -46,6 +46,16 @@ contract CrowdFunding {
         return campaignIndex;
     }
 
+    function getCampaigns() public view returns (Campaign[] memory) {
+        Campaign[] memory ListAllCampaigns = new Campaign[](numberOfCampaigns);
+
+        for (uint256 i = 0; i < numberOfCampaigns; i++) {
+            ListAllCampaigns[i] = campaigns[i];
+        }
+
+        return ListAllCampaigns;
+    }
+
     function donateToCampaign(uint256 _id) public payable {
         Campaign storage campaign = campaigns[_id];
 
@@ -54,9 +64,14 @@ contract CrowdFunding {
         require(success, "Failed to send Ether");
 
         campaign.donations.push(msg.value);
-        campaign.donators.push(msg.sender);
-				campaign.amountCollected += msg.value;
+        campaign.donors.push(msg.sender);
+        campaign.amountCollected += msg.value;
     }
 
-    function getDonators() external {}
+    function getDonors(
+        uint256 _id
+    ) public view returns (address[] memory, uint256[] memory) {
+        Campaign memory campaign = campaigns[_id];
+        return (campaign.donors, campaign.donations);
+    }
 }
