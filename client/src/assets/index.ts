@@ -5,5 +5,6 @@ import logout from "./logout.svg";
 import payment from "./payment.svg";
 import profile from "./profile.svg";
 import withdraw from "./withdraw.svg";
+import logo from "./logo.svg";
 
-export { sun, createCampaign, dashboard, logout, payment, profile, withdraw };
+export { sun, createCampaign, dashboard, logout, payment, profile, withdraw, logo };
