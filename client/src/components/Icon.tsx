@@ -27,12 +27,18 @@ const Icon: React.FC<IconProps> = ({
       onClick={handleClick}
     >
       {!activePath ? (
-        <img src={imgUrl} alt="fund_logo" className="w-1/2 h-1/2"/>
+        <img src={imgUrl} alt="fund_logo" className="w-1/2 h-1/2" />
       ) : (
         <img
           src={imgUrl}
           alt="icon"
-          className={`w-1/2 h-1/2 ${activePath !== name && "grayscale hover:grayscale-0"}`}
+          className={`w-1/2 h-1/2 ${
+            activePath !== name
+              ? disabled
+                ? "grayscale hover:grayscale"
+                : "grayscale hover:grayscale-0"
+              : ""
+          }`}
         />
       )}
     </div>
