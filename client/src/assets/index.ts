@@ -6,5 +6,22 @@ import payment from "./payment.svg";
 import profile from "./profile.svg";
 import withdraw from "./withdraw.svg";
 import logo from "./logo.svg";
+import thirdweb from "./thirdweb.png";
+import search from "./search.svg";
+import menu from "./menu.svg";
+import money from "./money.svg";
 
-export { sun, createCampaign, dashboard, logout, payment, profile, withdraw, logo };
+export {
+  sun,
+  createCampaign,
+  dashboard,
+  logout,
+  payment,
+  profile,
+  withdraw,
+  logo,
+  thirdweb,
+  search,
+  menu,
+  money,
+};
