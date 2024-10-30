@@ -10,6 +10,8 @@ import thirdweb from "./thirdweb.png";
 import search from "./search.svg";
 import menu from "./menu.svg";
 import money from "./money.svg";
+import loader from "./loader.svg";
+import tagType from "./type.svg";
 
 export {
   sun,
@@ -24,4 +26,6 @@ export {
   search,
   menu,
   money,
+	loader,
+	tagType
 };

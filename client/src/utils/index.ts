@@ -1,6 +1,8 @@
-export const daysLeft = (deadline: string | Date): string => {
-  const difference = new Date(deadline).getTime() - Date.now();
-  const remainingDays = difference / (1000 * 3600 * 24);
+export const daysLeft = (deadline: number): string => {
+	// deadline is a timestamp in seconds
+	// converting seconds to milliseconds because solidity timestamp is in seconds while JS is in millisecond
+  const difference = deadline * 1000 - Date.now();
+  const remainingDays = difference / (1000 * 3600 * 24); // difference divided by 1 day in milliseconds
 
   return remainingDays.toFixed(0);
 };
