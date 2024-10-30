@@ -1,14 +1,25 @@
 import React, { ReactNode, useContext, createContext } from "react";
 import useAppData from "./useAppData";
-import { PreparedTransaction } from "thirdweb";
 
 interface CreateCampaignProps {
   name: string;
   title: string;
   description: string;
-  target: bigint;
+  target: string;
   deadline: string;
   image: string;
+}
+
+interface ICampaignLists {
+  owner: string;
+  title: string;
+  description: string;
+  target: bigint;
+  deadline: bigint;
+  amountCollected: bigint;
+  image: string;
+  donors: readonly string[];
+  donations: readonly bigint[];
 }
 
 interface ApplicationData {
@@ -16,10 +27,12 @@ interface ApplicationData {
   contract: any;
   autoConnected: boolean | undefined;
   isLoading: boolean;
+  campaignLists: readonly ICampaignLists[] | undefined;
+  isPending: boolean;
   connectWallet: () => void;
-  createCampaign: (
-    campaignData: CreateCampaignProps
-  ) => Promise<PreparedTransaction | undefined>;
+  createCampaign: (campaignData: CreateCampaignProps) => Promise<void>;
+  getUserCampaigns: () => readonly ICampaignLists[] | undefined;
+  donate: (pId: bigint, amount: string) => Promise<void>;
 }
 
 interface StateContextProviderProps {
@@ -38,6 +51,10 @@ export const StateContextProvider: React.FC<StateContextProviderProps> = ({
     connectWallet,
     autoConnected,
     isLoading,
+    campaignLists,
+    isPending,
+    getUserCampaigns,
+    donate,
   } = useAppData();
 
   return (
@@ -49,6 +66,10 @@ export const StateContextProvider: React.FC<StateContextProviderProps> = ({
         isLoading,
         connectWallet,
         createCampaign,
+        campaignLists,
+        isPending,
+        getUserCampaigns,
+        donate,
       }}
     >
       {children}
