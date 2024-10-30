@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { money } from "../assets";
-import { CustomButton } from "../components";
+import { CustomButton, Loader } from "../components";
 import { FormField } from "../components";
 import { checkIfImage } from "../utils";
 import { useStateContext } from "../context";
@@ -44,11 +44,13 @@ function CreateCampaign() {
 
         await createCampaign({
           ...form,
-          target: ethers.parseUnits(form.target, 18),
+          target: ethers.parseUnits(form.target, 18).toString(),
         });
 
         setIsLoading(false);
-        naviage("/");
+        setTimeout(() => {
+          naviage("/");
+        }, 2000);
       } else {
         alert("Provide a valid image url");
         setForm({ ...form, image: "" });
@@ -58,7 +60,7 @@ function CreateCampaign() {
 
   return (
     <div className="bg-[#1c1c24] flex flex-col justify-center items-center rounded-[10px] sm:p-10 p-4">
-      {isLoading && "Loading..."}
+      {isLoading && <Loader />}
       <div className="flex justify-center items-center p-[16px] sm:min-w-[380px] bg-[#3a3a43] rounded-[10px]">
         <h1 className="font-roboto font-bold sm:text-[25px] text-[18px] text-white">
           Start a Campaign
@@ -141,7 +143,9 @@ function CreateCampaign() {
             disabled={!address ? true : false}
             btnType="submit"
             title="Submit new Campaign"
-            styles={`${!address ? "bg-[#6546] disabled:opacity-60" : "bg-[#1dc071]"}`}
+            styles={`${
+              !address ? "bg-[#6546] disabled:opacity-60" : "bg-[#1dc071]"
+            }`}
           />
         </div>
       </form>
