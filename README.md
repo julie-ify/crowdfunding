@@ -10,6 +10,7 @@ A web3 crowd funding platform
 - Hardhat
 - Tailwind
 - React/Vite
+- TypeScript
 - Thirdweb
 
 
