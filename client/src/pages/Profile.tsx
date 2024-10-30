@@ -22,7 +22,7 @@ function Profile() {
   return (
     <>
       <DisplayCampaigns
-        title="All Campaigns"
+        title="My Campaigns"
         isPending={isPending}
         campaigns={parsedCampaigns}
       />

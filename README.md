@@ -14,4 +14,4 @@ A web3 crowd funding platform
 - Thirdweb
 
 
-[Deployed Link](https://julianaifionu.com/)
+[Deployed Link](https://crowdfunding-neon.vercel.app/)
