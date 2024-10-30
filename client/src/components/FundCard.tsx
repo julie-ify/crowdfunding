@@ -1,4 +1,3 @@
-import React from "react";
 import { tagType, thirdweb } from "../assets";
 import { daysLeft } from "../utils";
 

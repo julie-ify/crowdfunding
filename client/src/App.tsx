@@ -3,7 +3,6 @@ import { Home, Profile, CreateCampaign, CampaignDetails } from "./pages";
 import { Sidebar, Navbar } from "./components";
 
 export default function App() {
-	// hello()
   return (
     <main className="relative sm:p-8 p-4 bg-[#13131a] min-h-screen flex text-white">
       <div className="hidden sm:flex mr-10 relative">

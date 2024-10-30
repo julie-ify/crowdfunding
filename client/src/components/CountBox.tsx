@@ -1,5 +1,3 @@
-import React from "react";
-
 interface CountBoxProps {
   title: string;
   value: string;

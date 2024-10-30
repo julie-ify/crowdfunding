@@ -92,8 +92,6 @@ const useAppData = () => {
     }
   };
 
-  // console.log('tra', createCampaignResult)
-
   // Function to get a user's campaigns
   const getUserCampaigns = () => {
     const getAllCampaigns = campaignLists?.filter(
