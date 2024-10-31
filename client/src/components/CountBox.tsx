@@ -1,7 +1,4 @@
-interface CountBoxProps {
-  title: string;
-  value: string;
-}
+import { CountBoxProps } from "../utils/datatypes";
 
 function CountBox({ title, value }: CountBoxProps) {
   return (

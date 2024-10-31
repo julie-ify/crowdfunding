@@ -1,13 +1,5 @@
 import React from "react";
-
-interface IconProps {
-  styles?: string;
-  name?: string;
-  imgUrl?: string;
-  activePath?: string;
-  disabled?: boolean;
-  handleClick?: () => void;
-}
+import { IconProps } from "../utils/datatypes";
 
 const Icon: React.FC<IconProps> = ({
   styles,

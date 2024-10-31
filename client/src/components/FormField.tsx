@@ -1,16 +1,4 @@
-interface FormProps {
-  labelName?: string;
-  placeholder: string;
-  inputType?: "text" | "email" | "date" | "url" | "number";
-  value: string;
-  inputName: string;
-  isTextArea?: boolean;
-  handleChange: (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => void;
-}
+import { FormProps } from "../utils/datatypes";
 
 function FormField({
   labelName,
@@ -35,7 +23,7 @@ function FormField({
           onChange={handleChange}
           name={inputName}
           placeholder={placeholder}
-					rows={10}
+          rows={10}
           className="py-[15px] sm:px-[25px] px-[15px] outline-none border-[1px] border-[#3a3a43] bg-transparent font-roboto text-white text-[14px] placeholder:text-[#4b5264] rounded-[10px] sm:min-w-[300px]"
         />
       ) : (

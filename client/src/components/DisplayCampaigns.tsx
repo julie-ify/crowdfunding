@@ -1,23 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { loader } from "../assets";
 import { FundCard } from "./";
-
-interface ICampaigns {
-  campaignId: number;
-  title: string;
-  owner: string;
-  description: string;
-  target: string;
-  deadline: number;
-  amountCollected: string;
-  image: string;
-}
-
-interface DisplayCampaignsProps {
-  title: string;
-  isPending: boolean;
-  campaigns: ICampaigns[];
-}
+import { DisplayCampaignsProps, parsedCampaignsProps} from '../utils/datatypes'
 
 function DisplayCampaigns({
   title,
@@ -26,7 +10,7 @@ function DisplayCampaigns({
 }: DisplayCampaignsProps) {
   const navigate = useNavigate();
 
-  const handleNavigate = (campaign: ICampaigns) => {
+  const handleNavigate = (campaign: parsedCampaignsProps) => {
 		// passing the campaign object through useNavigate which can be retrieved using useLocation
     navigate(`/campaign-details/${campaign.title}`, { state: campaign });
   };

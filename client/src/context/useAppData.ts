@@ -10,18 +10,11 @@ import { toWei } from "thirdweb/utils";
 import { createWallet } from "thirdweb/wallets";
 import { sepolia } from "thirdweb/chains";
 import { client } from "../client";
-
-interface CreateCampaignProps {
-  name: string;
-  title: string;
-  description: string;
-  target: string;
-  deadline: string;
-  image: string;
-}
+import { CreateCampaignProps } from "../utils/datatypes";
 
 const useAppData = () => {
   const [address, setAddress] = useState("");
+  const [searchCampagin, setSearchCampaign] = useState("");
 
   const contract = getContract({
     client,
@@ -128,6 +121,8 @@ const useAppData = () => {
     isPending,
     getUserCampaigns,
     donate,
+    searchCampagin,
+    setSearchCampaign,
   };
 };
 

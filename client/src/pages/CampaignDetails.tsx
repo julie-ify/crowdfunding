@@ -6,25 +6,10 @@ import { calculateBarPercentage, daysLeft } from "../utils";
 import { useStateContext } from "../context";
 import { useReadContract } from "thirdweb/react";
 import { toEther } from "thirdweb/utils";
-
-interface LocationState {
-  campaignId: number;
-  title: string;
-  owner: string;
-  description: string;
-  target: string;
-  deadline: number;
-  amountCollected: string;
-  image: string;
-}
-
-interface parsedDonorsProps {
-  donor: string;
-  donation: string;
-}
+import { parsedCampaignsProps, parsedDonorsProps } from "../utils/datatypes";
 
 function CampaignDetails() {
-  const { state } = useLocation() as { state: LocationState };
+  const { state } = useLocation() as { state: parsedCampaignsProps };
   const navigate = useNavigate();
   const { contract, address, donate } = useStateContext();
 

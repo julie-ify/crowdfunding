@@ -1,43 +1,6 @@
-import React, { ReactNode, useContext, createContext } from "react";
+import React, { useContext, createContext } from "react";
 import useAppData from "./useAppData";
-
-interface CreateCampaignProps {
-  name: string;
-  title: string;
-  description: string;
-  target: string;
-  deadline: string;
-  image: string;
-}
-
-interface ICampaignLists {
-  owner: string;
-  title: string;
-  description: string;
-  target: bigint;
-  deadline: bigint;
-  amountCollected: bigint;
-  image: string;
-  donors: readonly string[];
-  donations: readonly bigint[];
-}
-
-interface ApplicationData {
-  address?: string;
-  contract: any;
-  autoConnected: boolean | undefined;
-  isLoading: boolean;
-  campaignLists: readonly ICampaignLists[] | undefined;
-  isPending: boolean;
-  connectWallet: () => void;
-  createCampaign: (campaignData: CreateCampaignProps) => Promise<void>;
-  getUserCampaigns: () => readonly ICampaignLists[] | undefined;
-  donate: (pId: bigint, amount: string) => Promise<void>;
-}
-
-interface StateContextProviderProps {
-  children: ReactNode;
-}
+import { ApplicationData, StateContextProviderProps } from "../utils/datatypes";
 
 const StateContext = createContext<ApplicationData | undefined>(undefined);
 
@@ -55,6 +18,8 @@ export const StateContextProvider: React.FC<StateContextProviderProps> = ({
     isPending,
     getUserCampaigns,
     donate,
+    searchCampagin,
+    setSearchCampaign,
   } = useAppData();
 
   return (
@@ -70,6 +35,8 @@ export const StateContextProvider: React.FC<StateContextProviderProps> = ({
         isPending,
         getUserCampaigns,
         donate,
+        searchCampagin,
+        setSearchCampaign,
       }}
     >
       {children}

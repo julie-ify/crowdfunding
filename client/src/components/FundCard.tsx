@@ -1,20 +1,8 @@
 import { tagType, thirdweb } from "../assets";
 import { daysLeft } from "../utils";
-
-interface DisplayFundCardProps {
-  campaignId: number;
-  title: string;
-  owner: string;
-  description: string;
-  target: string;
-  deadline: number;
-  amountCollected: string;
-  image: string;
-  handleClick: () => void;
-}
+import { parsedCampaignsProps } from "../utils/datatypes";
 
 const FundCard = ({
-  campaignId,
   title,
   owner,
   description,
@@ -23,7 +11,7 @@ const FundCard = ({
   amountCollected,
   image,
   handleClick,
-}: DisplayFundCardProps) => {
+}: parsedCampaignsProps) => {
   const remainingDays = daysLeft(deadline);
 
   return (
