@@ -7,7 +7,7 @@ import {
   useReadContract,
 } from "thirdweb/react";
 import { toWei } from "thirdweb/utils";
-import { createWallet } from "thirdweb/wallets";
+import { createWallet, Wallet } from "thirdweb/wallets";
 import { sepolia } from "thirdweb/chains";
 import { client } from "../client";
 import { CreateCampaignProps } from "../utils/datatypes";
@@ -15,10 +15,11 @@ import { CreateCampaignProps } from "../utils/datatypes";
 const useAppData = () => {
   const [address, setAddress] = useState("");
   const [searchCampagin, setSearchCampaign] = useState("");
+	const [activeAccount, setActiveAccount] = useState<Wallet<"io.metamask"> | undefined>(undefined);
 
   const contract = getContract({
     client,
-    address: "0xbf154bE2B6C784637707A66b479584BA8Cea4d18", // contract address
+    address: "0x03bd8efA3208C3cCB4C90B834581CD5220a1E36F", // contract address
     chain: sepolia,
   });
 
@@ -35,8 +36,9 @@ const useAppData = () => {
   const connectWallet = () => {
     connect(async () => {
       const wallet = createWallet("io.metamask");
-      let connectdWallet = await wallet.connect({ client });
-      setAddress(connectdWallet.address);
+      let account = await wallet.connect({ client });
+      setAddress(account.address);
+      setActiveAccount(wallet);
       return wallet;
     });
 
@@ -114,6 +116,7 @@ const useAppData = () => {
     address,
     contract,
     connectWallet,
+		activeAccount,
     autoConnected,
     isLoading,
     createCampaign,

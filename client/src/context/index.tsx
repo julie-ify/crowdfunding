@@ -10,6 +10,7 @@ export const StateContextProvider: React.FC<StateContextProviderProps> = ({
   const {
     address,
     contract,
+		activeAccount,
     createCampaign,
     connectWallet,
     autoConnected,
@@ -27,6 +28,7 @@ export const StateContextProvider: React.FC<StateContextProviderProps> = ({
       value={{
         address,
         contract,
+				activeAccount,
         autoConnected,
         isLoading,
         connectWallet,

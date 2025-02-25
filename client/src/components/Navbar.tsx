@@ -9,15 +9,21 @@ function Navbar() {
   const [activePath, setActivePath] = useState("dashboard");
   const [toggleDrawer, setToggleDrawer] = useState(false);
   const navigate = useNavigate();
-  const { address, connectWallet, isLoading, searchCampagin, setSearchCampaign } = useStateContext();
+  const {
+    address,
+    connectWallet,
+    isLoading,
+    searchCampagin,
+    setSearchCampaign,
+  } = useStateContext();
 
   const handleSearch = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ) => {
-		setSearchCampaign(e.target.value)
-	};
+    setSearchCampaign(e.target.value);
+  };
 
   return (
     <div className="flex flex-col-reverse md:flex-row justify-between mb-[35px] gap-6 ">
@@ -44,10 +50,13 @@ function Navbar() {
         {!isLoading && (
           <CustomButton
             btnType="button"
-            title={address ? `${address}` : "Connect"}
-            styles={
-              address ? "bg-[#1dc071] truncate w-[150px]" : "bg-[#8c6dfd]"
+            title={
+              address
+                ? `${address.slice(0, 4)}...${address.slice(-4)}`
+                : "Connect"
             }
+            isIcon={true}
+            styles={address ? "bg-[#1dc071]" : "bg-[#8c6dfd]"}
             handleClick={() => {
               if (address) {
                 // navigate("create-campaign");
@@ -130,8 +139,13 @@ function Navbar() {
             {!isLoading && (
               <CustomButton
                 btnType="button"
-                title={address ? `${address.slice(0, 10)}...` : "Connect"}
+                title={
+                  address
+                    ? `${address.slice(0, 4)}...${address.slice(-4)}`
+                    : "Connect"
+                }
                 styles={address ? "bg-[#1dc071]" : "bg-[#8c6dfd]"}
+                isIcon={true}
                 handleClick={() => {
                   if (address) {
                     // navigate("create-campaign");

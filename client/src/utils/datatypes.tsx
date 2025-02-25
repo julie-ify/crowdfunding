@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { Wallet } from "thirdweb/wallets";
 
 export interface parsedCampaignsProps {
   campaignId: number;
@@ -9,7 +10,7 @@ export interface parsedCampaignsProps {
   deadline: number;
   amountCollected: string;
   image: string;
-	handleClick?: () => void;
+  handleClick?: () => void;
 }
 
 export interface CreateCampaignProps {
@@ -36,6 +37,7 @@ export interface ICampaignLists {
 export interface ApplicationData {
   address?: string;
   contract: any;
+  activeAccount: Wallet<"io.metamask"> | undefined;
   autoConnected: boolean | undefined;
   isLoading: boolean;
   campaignLists: readonly ICampaignLists[] | undefined;
@@ -61,7 +63,8 @@ export interface ButtonProps {
   btnType?: "submit" | "button" | "reset";
   title?: string;
   styles?: string;
-	disabled? :boolean
+  disabled?: boolean;
+  isIcon?: boolean;
   handleClick?: () => void;
 }
 
